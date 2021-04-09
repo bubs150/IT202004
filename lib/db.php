@@ -17,4 +17,5 @@ function getDB()
   }
   return $db;
 }
+$db=getDB();
 ?>
