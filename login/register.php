@@ -2,9 +2,10 @@
     require(__DIR__ . "/../lib/myFunctions.php");
     if(isset($_REQUEST["email"])){
         $email = $_REQUEST["email"];
+        $user = $_REQUEST["user"];
         $password = $_REQUEST["password"];
         $confirm = $_REQUEST["confirm"];
-        if(is_empty_or_null($email) || is_empty_or_null($password) || is_empty_or_null($confirm)){
+        if(is_empty_or_null($email) || is_empty_or_null($password) || is_empty_or_null($confirm) || is_empty_or_null($user)){
             echo "Something's missing here....";
             exit();
         }
@@ -17,10 +18,11 @@
         //Note: mysqli doesn't support named parameters
         //use positional prepared statements or real_escape_string
         $email = mysqli_real_escape_string($db, $email);
+        $user = mysqli_real_escape_string($db, $user);
         $hash = password_hash($password, PASSWORD_BCRYPT);
         $password = mysqli_real_escape_string($db, $password);
         //mysqli still wants the single quotes in the query so can't just drop in the variables post-escape
-        $sql = "INSERT INTO mt_users (email, password, rawPassword) VALUES ('$email', '$hash','$password')";
+        $sql = "INSERT INTO mt_users (email, username, password, rawPassword) VALUES ('$email', '$user', '$hash','$password')";
         $retVal = mysqli_query($db, $sql);
         if($retVal){
             echo "Welcome to the club";
