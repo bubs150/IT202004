@@ -37,6 +37,8 @@
 <form method="POST">
 <label>Email</label>
 <input type="text" name="email"/>
+<label>Username</label>
+<input type="text" name="user"/>
 <label>Password</label>
 <input type="password" name="password"/>
 <input type="password" name="confirm"/>
