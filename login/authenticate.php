@@ -1,5 +1,5 @@
 <?php
-    require(__DIR__ . "/../lib/myFunctions.php");
+    require(__DIR__ . "/../lib/navigate.php");
     if(isset($_REQUEST["email"])){
         $email = $_REQUEST["email"];
         $password = $_REQUEST["password"];
