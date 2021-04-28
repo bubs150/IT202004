@@ -51,7 +51,7 @@ function isWithin(a, b, c) {
 }
 
 // Listen for keydown events
-windows.addEventListener('keydown', function(event) {
+canvas.addEventListener('keydown', function(event) {
   event.preventDefault();
   console.log(event.key, event.keyCode);
   if (event.keyCode === 40) { // DOWN
@@ -69,7 +69,7 @@ windows.addEventListener('keydown', function(event) {
 });
 
 // Listen for keyup events
-windows.addEventListener('keyup', function(event) {
+canvas.addEventListener('keyup', function(event) {
   event.preventDefault();
   console.log(event.key, event.keyCode);
   if (event.keyCode === 40) { // DOWN
@@ -98,7 +98,7 @@ function menu() {
   context.font = '18px Arial'
   context.fillText('Use the arrow keys to move', canvas.width / 2, (canvas.height / 4) * 3);
   // Start the game on a click
-  windows.addEventListener('click', startGame);
+  canvas.addEventListener('click', startGame);
 }
 
 // Start the game
@@ -108,7 +108,7 @@ function startGame() {
     countdown--;
   }, 1000)
   // Stop listening for click events
-  windows.removeEventListener('click', startGame);
+  canvas.removeEventListener('click', startGame);
   // Put the target at a random starting point
 	moveTarget();
   // Kick off the draw loop
