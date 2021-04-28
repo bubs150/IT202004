@@ -108,7 +108,7 @@ function startGame() {
     countdown--;
   }, 1000)
   // Stop listening for click events
-  canvas.removeEventListener('click', startGame);
+  windows.removeEventListener('click', startGame);
   // Put the target at a random starting point
 	moveTarget();
   // Kick off the draw loop
