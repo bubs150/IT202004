@@ -51,7 +51,7 @@ function isWithin(a, b, c) {
 }
 
 // Listen for keydown events
-canvas.addEventListener('keydown', function(event) {
+windows.addEventListener('keydown', function(event) {
   event.preventDefault();
   console.log(event.key, event.keyCode);
   if (event.keyCode === 40) { // DOWN
@@ -69,7 +69,7 @@ canvas.addEventListener('keydown', function(event) {
 });
 
 // Listen for keyup events
-canvas.addEventListener('keyup', function(event) {
+windows.addEventListener('keyup', function(event) {
   event.preventDefault();
   console.log(event.key, event.keyCode);
   if (event.keyCode === 40) { // DOWN
@@ -98,7 +98,7 @@ function menu() {
   context.font = '18px Arial'
   context.fillText('Use the arrow keys to move', canvas.width / 2, (canvas.height / 4) * 3);
   // Start the game on a click
-  canvas.addEventListener('click', startGame);
+  windows.addEventListener('click', startGame);
 }
 
 // Start the game
