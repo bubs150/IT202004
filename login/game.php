@@ -35,15 +35,20 @@ var targetX = 0;
 var targetY = 0;
 var targetLength = 25;
 
-// Determine if number a is within the range b to c (exclusive)
-function isWithin(a, b, c) {
-  return (a > b && a < c);
-}
-
 // Countdown timer (in seconds)
 var countdown = 30;
 // ID to track the setTimeout
 var id = null;
+
+
+// Start the game
+menu();
+canvas.focus();
+
+// Determine if number a is within the range b to c (exclusive)
+function isWithin(a, b, c) {
+  return (a > b && a < c);
+}
 
 // Listen for keydown events
 windows.addEventListener('keydown', function(event) {
@@ -192,9 +197,6 @@ function draw() {
   }
 }
 
-// Start the game
-menu();
-canvas.focus();
 </script>
 
 </main>
