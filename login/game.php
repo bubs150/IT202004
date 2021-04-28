@@ -129,7 +129,8 @@ function endGame() {
 
 // Move the target square to a random position
 function moveTarget() {
-  sideLength-=0.7;
+  sideLength-=0.7;//personal change, makes player square smaller with each target cube touched
+  targetLength-=0.3;//personal change, makes target square smaller with each target cube touched
   targetX = Math.round(Math.random() * canvas.width - targetLength);
   targetY = Math.round(Math.random() * canvas.height - targetLength)
 }
@@ -188,7 +189,11 @@ function draw() {
   context.fillStyle = '#000000';
   context.font = '24px Arial';
   context.textAlign = 'left';
-  context.fillText('Score: ' + score, 10, 24);
+    if(score<=20){//changes text when player gets high enough points
+      context.fillText('Score: ' + score, 10, 24);
+    }else{
+      context.fillText('You are great! Score: ' + score, 10, 24);
+    }
   context.fillText('Time Remaining: ' + countdown, 10, 50);
   // End the game or keep playing
   if (countdown <= 0) {
