@@ -27,6 +27,13 @@ function is_logged_in(){
     return isset($_SESSION["user"]) && isset($_SESSION["user"]["id"]);
 }
 
+function get_user_id(){
+    if(is_logged_in()){
+        return $_SESSION["user"]["id"];
+    }
+    return "";
+}
+
 function get_email(){
     if(is_logged_in()){
         return $_SESSION["user"]["email"];
