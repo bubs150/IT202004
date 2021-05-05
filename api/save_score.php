@@ -1,4 +1,5 @@
-<php
+<?php
+
 $response = ["status"=>400, "message"=>"Invalid Request"];
 if(isset($_POST["score"])){
 	require(__DIR__ . "/../lib/myFunctions.php");
