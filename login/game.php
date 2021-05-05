@@ -39,7 +39,6 @@ var targetLength = 25;
 var countdown = 30;
 // ID to track the setTimeout
 var id = null;
-let didSend = false;
 
 
 // Start the game
@@ -90,7 +89,6 @@ window.addEventListener('keyup', function(event) {
 // Show the start menu
 function menu() {
   erase();
-  didSend = false;
   context.fillStyle = '#000000';
   context.font = '36px Arial';
   context.textAlign = 'center';
@@ -105,20 +103,6 @@ function menu() {
 
 // Start the game
 function startGame() {
-  let ajax = new XMLHttpRequest();
-  ajax.onreadystatechange = function(){
-  if(this.readyState == 4 && this.status == 200){
-    let resp = this.responseText;
-    resp = JSON.parse(resp);
-    console.log("response", resp, resp["data"], resp.data);
-    if(resp.status === 200){
-      speed = resp.data.speed;
-      targetLength = resp.data.targetLength;
-      sideLength = resp.data.sideLength;
-    }
-  }
-ajax.open("GET", "api/game_setting.php", true);
-ajax.send();
 	// Reduce the countdown timer ever second
   id = setInterval(function() {
     countdown--;
@@ -141,17 +125,6 @@ function endGame() {
   context.font = '24px Arial';
   context.textAlign = 'center';
   context.fillText('Final Score: ' + score, canvas.width / 2, canvas.height / 2);
-  saveScore();	
-}
-
-function saveScore(){
-  if(!didSend){
-    didSend = true;
-    let xhttp = new XMLHttpRequest();
-    xhttp.open("POST" "api/save_score.php, true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded);
-    xhttp.send("score="+score);
-  }
 }
 
 // Move the target square to a random position
