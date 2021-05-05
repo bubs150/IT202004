@@ -39,6 +39,7 @@ var targetLength = 25;
 var countdown = 30;
 // ID to track the setTimeout
 var id = null;
+let didSend = false;
 
 
 // Start the game
@@ -103,6 +104,7 @@ function menu() {
 
 // Start the game
 function startGame() {
+  didSend = false;
   let ajax = new XMLHttpRequest();
   ajax.onreadystatechange = function(){
 	if(this.readyState == 4 && this.status == 200){
@@ -139,8 +141,19 @@ function endGame() {
   context.font = '24px Arial';
   context.textAlign = 'center';
   context.fillText('Final Score: ' + score, canvas.width / 2, canvas.height / 2);
+  saveScore();
 }
 
+function saveScore(){
+  if(!didSend){
+    didSend = true;
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("POST" "api/save_score.php, true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded);
+    xhttp.send("score="+score);
+  }
+}
+	
 // Move the target square to a random position
 function moveTarget() {
   sideLength-=0.7;//personal change, makes player square smaller with each target cube touched
