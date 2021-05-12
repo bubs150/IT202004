@@ -3,7 +3,10 @@
 <head>
 </head>
 <body>
-<?php require("navigate.php"); //originally, you forgot the file path, game.php was outside the folder for navigiate and move the files into arcade folder so this works
+<?php require("navigate.php"); 
+if(!is_logged_in()){
+    die(header("Location: authenticate.php"));
+}
 ?>
 <main>
 <canvas	id="canvas" width="600px" height="400px" style="border: 1px solid black">
