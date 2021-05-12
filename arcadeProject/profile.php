@@ -2,6 +2,10 @@
 
 <?php
 
+if(!is_logged_in()){
+    die(header("Location: authenticate.php"));
+}
+
 /*
 $name=get_username();
 $mail=get_email();
