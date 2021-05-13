@@ -53,7 +53,7 @@ elseif(get_role()=="admin"):
 else:
 ?>
 
-<li><a href="home.php" id="grad1">Admin Settings</a></li>
+<li><a href="home.php" id="grad1">Home</a></li>
 <li><a href="profile.php" id="grad1">Profile</a></li>
 <li><a href="logout.php" id="grad1">Logout</a></li>
 <li><a href="thegame.php" id="grad1">Chase the Box</a></li>
