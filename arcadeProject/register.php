@@ -74,12 +74,4 @@
     </select>
 </div>
 
-<div>
-    <label for="role">Role</label>
-    <select name="role" id="role" readonly>
-        <option <?php echo ($result['role'] === "admin"?'selected="selected"':'');?> value="admin">Admin</option>
-        <option <?php echo ($result['role'] === "user"?'selected="selected"':'');?> value="user">User</option>
-    </select>
-</div>
-
 </form>
