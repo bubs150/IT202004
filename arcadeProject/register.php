@@ -10,7 +10,6 @@
         $password = $_REQUEST["password"];
         $confirm = $_REQUEST["confirm"];
         $v = $_REQUEST["vis"];
-        $r = $_REQUEST["role"];
         $valid = true;
         if(is_empty_or_null($email) || is_empty_or_null($password) || is_empty_or_null($confirm) || is_empty_or_null($user)){
             echo "Something's missing here....";
@@ -38,7 +37,7 @@
             $hash = password_hash($password, PASSWORD_BCRYPT);
             $password = mysqli_real_escape_string($db, $password);
             //mysqli still wants the single quotes in the query so can't just drop in the variables post-escape
-            $sql = "INSERT INTO mt_users (email, username, password, rawPassword, visibility, role) VALUES ('$email', '$user', '$hash','$password', '$v', '$r')";
+            $sql = "INSERT INTO mt_users (email, username, password, rawPassword, visibility) VALUES ('$email', '$user', '$hash','$password', '$v')";
             $retVal = mysqli_query($db, $sql);
             if($retVal){
                 echo "You are being redirected to the login page.";
