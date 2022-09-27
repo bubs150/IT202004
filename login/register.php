@@ -1,4 +1,5 @@
 <?php
+
     require("navigate.php");
     if(isset($_REQUEST["email"])){
         $email = $_REQUEST["email"];
@@ -25,10 +26,15 @@
         $sql = "INSERT INTO mt_users (email, username, password, rawPassword) VALUES ('$email', '$user', '$hash','$password')";
         $retVal = mysqli_query($db, $sql);
         if($retVal){
-            echo "Welcome to the club";
+            echo "Welcome to the club! Try our new game and beat the high score!";
         }
         else{
-            echo "Something didn't work out " . mysqli_error($db);
+            if(mysqli_error($db) == "Duplicate entry '${user}' for key 'username'"){
+                  echo "We already gots a ${user} buddy. Move along.";
+                  
+              }else if(mysqli_error($db) == "Duplicate entry '${email}' for key 'unq_email'"){
+                  echo "Buddy, you already made an account. Get outta here.";
+              }
         }
         //TODO: don't forget to close your connection, don't want resource leaks
         mysqli_close($db);

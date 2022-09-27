@@ -6,6 +6,9 @@ $_SESSION = array();        //Make $_SESSION  empty OR session_unset()
 session_destroy();            //Terminate session on server
 require("navigate.php");
 setcookie("PHPSESSID", "", time()-3600); ;
-echo "Your session is terminated."; 
-echo "This uses the default 'path' for a session - <br>it should actually be a more specific path!";
+echo "You have logged out.<br>";
+echo "You will now be returned to the login page."; 
+
+die(header( "refresh:5;url=authenticate.php"));
+
 ?>

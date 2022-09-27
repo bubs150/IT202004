@@ -12,7 +12,6 @@ function getDB()
 	    echo "Failed to connect to MySQL:".mysqli_connect_error();
 	    exit();
     }
-    print "You have successfully connected to MySQL database.<br>";
     mysqli_select_db($db,$project);
   }
   return $db;

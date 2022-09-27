@@ -3,6 +3,8 @@
 <head>
 </head>
 <body>
+<?php require("navigate.php"); //originally, you forgot the file path, game.php was outside the folder for navigiate and move the files into arcade folder so this works
+?>
 <main>
 <canvas	id="canvas" width="600px" height="400px" style="border: 1px solid black">
 
@@ -115,14 +117,16 @@ function startGame() {
 			speed = resp.data.speed;
 			targetLength = resp.data.targetLength;
 			sideLength = resp.data.sideLength;
+      countdown = resp.data.countdown;
 	  }
   }
-  ajax.open("GET", "api/game_setting.php", true);
+  }
+  ajax.open("GET", "api/game_settings.php", true);
   ajax.send();
 	// Reduce the countdown timer ever second
   id = setInterval(function() {
     countdown--;
-  }, 1000)
+  }, 1000);
   // Stop listening for click events
   canvas.removeEventListener('click', startGame);
   // Put the target at a random starting point
@@ -148,8 +152,8 @@ function saveScore(){
   if(!didSend){
     didSend = true;
     let xhttp = new XMLHttpRequest();
-    xhttp.open("POST" "api/save_score.php, true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded);
+    xhttp.open("POST", "api/save_score.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("score="+score);
   }
 }
@@ -159,7 +163,7 @@ function moveTarget() {
   sideLength-=0.7;//personal change, makes player square smaller with each target cube touched
   targetLength-=0.3;//personal change, makes target square smaller with each target cube touched
   targetX = Math.round(Math.random() * canvas.width - targetLength);
-  targetY = Math.round(Math.random() * canvas.height - targetLength)
+  targetY = Math.round(Math.random() * canvas.height - targetLength);
 }
 
 // Clear the canvas
